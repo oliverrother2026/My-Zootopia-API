@@ -60,9 +60,11 @@ def serialize_animal(animal_obj):
     return output
 
 
-animals_data = get_animals_data("Fox")
-print("Anzahl gefundener Tiere:", len(animals_data))
-print("Tiernamen:", [animal["name"] for animal in animals_data])
+animal_name = input("Enter a name of an animal: ")
+animals_data = get_animals_data(animal_name)
+
+#print("Anzahl gefundener Tiere:", len(animals_data))
+#print("Tiernamen:", [animal["name"] for animal in animals_data])
 
 with open("animals_template.html", "r", encoding="utf-8") as file:
     html_template = file.read()
@@ -81,3 +83,5 @@ html_content = html_template.replace("__REPLACE_ANIMALS_INFO__", output)
 
 with open("animals.html", "w", encoding="utf-8") as file:
     file.write(html_content)
+
+print("Website was successfully generated to the file animals.html.")
