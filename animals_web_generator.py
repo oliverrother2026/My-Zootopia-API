@@ -74,8 +74,11 @@ with open("animals_template.html", "r", encoding="utf-8") as file:
 
 output = ""
 
-for animal in animals_data:
-    output += serialize_animal(animal)
+if not animals_data:
+    output = f"<h2>Das Tier '{animal_name}' existiert nicht.</h2>"
+else:
+    for animal in animals_data:
+        output += serialize_animal(animal)
 
 # print(output)
 
