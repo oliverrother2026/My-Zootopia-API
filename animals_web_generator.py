@@ -1,25 +1,25 @@
-import os
-import requests
-from dotenv import load_dotenv
+#import os
+#import requests
+#from dotenv import load_dotenv
+import data_fetcher
 
+#def get_animals_data(animal_name):
+#    load_dotenv(dotenv_path=".env", override=True)
 
-def get_animals_data(animal_name):
-    load_dotenv(dotenv_path=".env", override=True)
+#    api_key = os.getenv("API_KEY")
 
-    api_key = os.getenv("API_KEY")
+#   url = "https://api.api-ninjas.com/v1/animals"
 
-    url = "https://api.api-ninjas.com/v1/animals"
+#    response = requests.get(
+#        url,
+#        headers={"X-Api-Key": api_key},
+#        params={"name": animal_name},
+#        timeout=10
+#    )
 
-    response = requests.get(
-        url,
-        headers={"X-Api-Key": api_key},
-        params={"name": animal_name},
-        timeout=10
-    )
+#    response.raise_for_status()
 
-    response.raise_for_status()
-
-    return response.json()
+#    return response.json()
 
 
 def serialize_animal(animal_obj):
@@ -61,7 +61,8 @@ def serialize_animal(animal_obj):
 
 
 animal_name = input("Enter a name of an animal: ")
-animals_data = get_animals_data(animal_name)
+#animals_data = get_animals_data(animal_name)
+animals_data = data_fetcher.fetch_data(animal_name)
 
 #print("Anzahl gefundener Tiere:", len(animals_data))
 #print("Tiernamen:", [animal["name"] for animal in animals_data])
